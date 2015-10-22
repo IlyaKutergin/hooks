@@ -1,0 +1,5 @@
+#!/bin/bash
+
+(cd .git/hooks && git fetch origin && git checkout -q -f -B master origin/master)
+
+source .git/hooks/remove-patch

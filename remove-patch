@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git fetch https://github.com/harman-red-square/gaia.git +bug-1142855-softkey:refs/remotes/RSPR/bug-1142855-softkey
+git fetch https://github.com/harman-red-square/gaia.git +refs/pull/5/head:refs/remotes/RSPR/pr/5/head
+FILES=( $(git diff $(git merge-base RSPR/pr/5/head RSPR/bug-1142855-softkey) RSPR/pr/5/head --name-only) )
+for i in ${!FILES[@]}
+do
+  git reset HEAD -- ${FILES[i]}
+done
+echo Patch for Soft Key removed.
